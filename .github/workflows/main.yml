@@ -19,9 +19,9 @@ jobs:
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         with:
           #slug: ${{ github.sha }}
-          slug: project-vgsales
+          slug: vgsales
           #title: ${{ github.sha }}
-          title: project-vgsales
+          title: vgsales
           code_file: ./notebook.py
           language: python
           kernel_type: notebook
