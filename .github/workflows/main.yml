@@ -18,7 +18,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Push kernel to kaggle
-      uses: joelhanson/kaggle-kernel-actions
+      uses: joelhanson/kaggle-kernel-actions@master
       with:
         kaggle_username: ${{ secrets.kaggle_username }}
         kaggle_key: ${{ secrets.kaggle_key }}
