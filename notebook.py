@@ -1,7 +1,7 @@
 import numpy as np # linear algebra
 import os
 import time
-
+ 
 
 def debugInfoBasic():
     #list CSVs in our input folder
