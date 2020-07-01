@@ -1,4 +1,4 @@
-name: Upload
+name: Kaggle kernel actions
 
 on:
   push:
@@ -6,26 +6,24 @@ on:
       - master
 
 jobs:
-  upload:
-    name: Upload
+  build:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, macos-latest ]
+        python-version: [ '2.7.17', '3.6.10' ]
+    name: Python ${{ matrix.python-version }} ${{ matrix.os }} 
 
-      - uses: harupy/push-kaggle-kernel@master
-        env:
-          # Do not leak your credentials.
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
-        with:
-          #slug: ${{ github.sha }}
-          slug: pcbrown/project-vgsales
-          #title: ${{ github.sha }}
-          title: project-vgsales
-          code_file: ./notebook.py
-          language: python
-          kernel_type: notebook
-          # Do not share high-scoring kernels.
-          is_private: false
-          #competition_sources: |
-          #  titanic
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Push kernel to kaggle
+      uses: joelhanson/kaggle-kernel-actions
+      with:
+        kaggle_username: ${{ secrets.kaggle_username }}
+        kaggle_key: ${{ secrets.kaggle_key }}
+        kaggle_make_new_kernel: true
+        kaggle_metadata_path: kernel-metadata.json
+        kernel_id: pcbrown/project-vgsales2
+        #competition: titanic
+        dataset_sources: gregorut/videogamesales
