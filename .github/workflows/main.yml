@@ -1,0 +1,29 @@
+name: Upload
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  upload:
+    name: Upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: harupy/push-kaggle-kernel@master
+        env:
+          # Do not leak your credentials.
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        with:
+          slug: ${{ github.sha }}
+          title: ${{ github.sha }}
+          code_file: ./notebook.py
+          language: python
+          kernel_type: notebook
+          # Do not share high-scoring kernels.
+          is_private: false
+          #competition_sources: |
+          #  titanic
