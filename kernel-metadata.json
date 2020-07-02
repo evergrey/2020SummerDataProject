@@ -1,13 +1,16 @@
 {
-  "id": "pcbrown/project-vgsales2",
-  "title": "https://www.kaggle.com/pcbrown/project-vgsales2",
+  "id": "pcbrown/project-vgsales",
+  "title": "project_vgsales",
   "code_file": "notebook.py",
   "language": "python",
   "kernel_type": "notebook",
-  "is_private": "true",
-  "enable_gpu": "false",
-  "enable_internet": "false",
-  "dataset_sources": ["gregorut/videogamesales"],
-  "competition_sources": [],
-  "kernel_sources": []
+  "is_private": false,
+  "enable_gpu": false,
+  "enable_internet": false,
+  "keywords": [],
+  "dataset_sources": [
+    "gregorut/videogamesales"
+  ],
+  "kernel_sources": [],
+  "competition_sources": []
 }
