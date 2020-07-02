@@ -1,4 +1,4 @@
-name: Kaggle kernel actions
+name: Kaggle kernel actionsa
 
 on:
   push:
@@ -25,6 +25,6 @@ jobs:
         kaggle_key: ${{ secrets.KAGGLE_KEY }}
         kaggle_make_new_kernel: true
         kaggle_metadata_path: kernel-metadata.json
-        kernel_id: pcbrown/project-vgsales2
+        kernel_id: pcbrown/project-vgsales4
         #competition: titanic
         dataset_sources: gregorut/videogamesales
